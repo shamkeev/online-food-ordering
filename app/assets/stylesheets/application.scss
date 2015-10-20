@@ -14,3 +14,18 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body{
+  backround: url('bg.png')
+}
+.meal-block{
+  border: 2px dashed #c6b198;
+  background: #fff9eb;
+  margin-bottom:10px;
+  border-radius:5px;
+  padding: 10px;
+}
+
+.meal-image{
+  max-width: 100%;
+}

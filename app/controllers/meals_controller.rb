@@ -30,6 +30,7 @@ class MealsController < AdminController
       if @meal.save
         format.html { redirect_to @meal, notice: 'Meal was successfully created.' }
         format.json { render :show, status: :created, location: @meal }
+        upload_picture(@meal)
       else
         format.html { render :new }
         format.json { render json: @meal.errors, status: :unprocessable_entity }
@@ -44,6 +45,7 @@ class MealsController < AdminController
       if @meal.update(meal_params)
         format.html { redirect_to @meal, notice: 'Meal was successfully updated.' }
         format.json { render :show, status: :ok, location: @meal }
+        upload_picture(@meal)
       else
         format.html { render :edit }
         format.json { render json: @meal.errors, status: :unprocessable_entity }
@@ -61,9 +63,23 @@ class MealsController < AdminController
     end
   end
 
-  def upload_picture
-    uploaded_file =  params[:meal][:image]
-  end
+  def upload_picture(meal)
+    uploaded_file = params[:meal][:image]
+
+    if !uploaded_file.nil?
+      file_name = meal.id.to_s + File.extname(uploaded_file.original_filename)
+
+      new_file_path = Rails.root.join('public','uploads', 'meals', file_name)
+
+      File.open(new_file_path, 'wb') do |file|
+        file.write uploaded_file.read
+      end
+
+      meal.update_attribute(:image, file_name)
+    end
+
+    end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -73,6 +89,6 @@ class MealsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:name, :price, :description, :restaurant_id)
+      params.require(:meal).permit(:name, :price, :description, :restaurant_id, :image)
     end
 end

@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag "/uploads/restaurants/#{@restaurant.image}", height: '200' %>
+  </div>
+  <div class="col-md-9">
+    <h1><%= @restaurant.name %></h1>
+    <div class="well">
+      <p><%= @restaurant.description %></p>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<div class="row">
+  <% @meals.each do |meal| %>
+
+      <div class="col-xs-6 col-md-3">
+        <div class="meal-block">
+          <%= link_to (image_tag "/uploads/meals/#{meal.image}", class:"thumbnail meal-image"), show_meal_path(meal)%>
+          <caption>
+            <h3><%= meal.name %></h3>
+            <p><strong><%= meal.price %></strong></p>
+          </caption>
+
+
+        </div>
+
+      </div>
+
+  <% end %>
+</div>
+
+
+

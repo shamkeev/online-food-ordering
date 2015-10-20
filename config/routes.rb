@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   scope :admin do
     get '/', to: 'restaurants#index', as: 'admin'
     resources :meals
@@ -8,8 +9,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get 'meals', to:'home#show_meals', as: 'show_meals'
-  get 'restaurants', to:'home#show_restaurants', as: 'show_restaurants'
+  get 'meal/:id', to:'home#show_meal', as: 'show_meal'
+  get 'restaurant/:id', to:'home#show_restaurant', as: 'show_restaurant'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
