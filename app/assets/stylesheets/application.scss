@@ -16,7 +16,7 @@
 @import "bootstrap";
 
 body{
-  backround: url('bg.png')
+  background-image: image-url('bg.png');
 }
 .meal-block{
   border: 2px dashed #c6b198;
@@ -27,5 +27,9 @@ body{
 }
 
 .meal-image{
+  max-width: 100%;
+}
+
+.res-image{
   max-width: 100%;
 }
