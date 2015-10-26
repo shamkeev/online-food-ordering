@@ -19,3 +19,18 @@ body{
 .res-image{
   max-width: 100%;
 }
+
+.restaurant{
+  border: 2px dashed #c6b198;
+  background: #fff9eb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.restaurant img{
+  height: auto;
+  max-width: 100%;
+}
