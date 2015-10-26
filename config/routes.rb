@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  scope :admin do
-    get '/', to: 'restaurants#index', as: 'admin'
-    resources :meals
-    resources :restaurants
-  end
 
   root 'home#index'
 
