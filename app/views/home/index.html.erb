@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<div class="col-md-9">
+<div class="col-md-12">
   <% @restaurants.each do |restaurant| %>
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-4 col-sm-6">
         <div class="restaurant">
           <%= link_to (image_tag "/uploads/restaurants/#{restaurant.image}"),
                       show_restaurant_path(restaurant)%>
@@ -10,17 +10,7 @@
           <%= restaurant.description %>
         </div>
       </div>
-
   <% end %>
 </div>
 
-<div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Cart
-      </div>
-    	<div class="panel-body">
-    	   Panel body ...
-    	</div>
-    </div>
-</div>
+
