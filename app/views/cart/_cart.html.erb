@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Cart
+  </div>
+  <div class="panel-body">
+    <% total_price = 0 %>
+    <% if @cart_items.count > 0 %>
+        <table class="table table-condensed">
+          <% @cart_items.each do |meal| %>
+              <% quantity = session[:cart].count(meal.id.to_s)%>
+              <tr>
+                <td><%= meal.name %></td>
+                <td> x </td>
+                <td> <%= quantity %></td>
+                <td><%= meal.price * quantity %></td>
+              </tr>
+              <% total_price += (meal.price * quantity) %>
+          <% end %>
+          <tr>
+            <td>Total:</td>
+            <td></td>
+            <td><%= total_price %></td>
+            <td>soms</td>
+          </tr>
+        </table>
+    <% else %>
+        <p>There are no items in your cart</p>
+    <% end %>
+  </div>
+</div>
